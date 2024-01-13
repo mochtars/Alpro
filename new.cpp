@@ -42,12 +42,11 @@ int menghitungJam(int waktu);
 int menghitungJamRaw(int waktu);
 int menghitungMenit(int waktu);
 
-
 time_t hello;
 
 int main () {
 
-  char pilihan;
+  string pilihan;
   system("clear");
   hello = time(0) - totalHari;
   
@@ -69,10 +68,10 @@ int main () {
     cin >> pilihan;
 
     cin.ignore(100, '\n');
-    if (pilihan == '1') menampilkanParkiran(); 
-    else if (pilihan == '2') kendaraanMasuk();
-    else if (pilihan == '3') kendaraanKeluar();
-    else if (pilihan == '0') break;
+    if (pilihan == "1") menampilkanParkiran(); 
+    else if (pilihan == "2") kendaraanMasuk();
+    else if (pilihan == "3") kendaraanKeluar();
+    else if (pilihan == "0") break;
     else {
       cout << "Tolong masukan input yang sesuai!\n";
       sleep(1);
@@ -133,8 +132,7 @@ void kendaraanMasuk() {
   Parkir *kendaraan;
   string nama;
   string noPolisi;
-  char temp;
-  string tempStr;
+  string temp;
   unsigned int id;
 
   system("clear");
@@ -151,15 +149,15 @@ void kendaraanMasuk() {
     cout << "1. Mobil  2. Motor\nApa jenis kendaraan anda? ";
     cin >> temp;
 
-    if (temp == '1') kendaraan = parkirMobil;
-    else if (temp == '2') kendaraan = parkirMotor;
+    if (temp == "1") kendaraan = parkirMobil;
+    else if (temp == "2") kendaraan = parkirMotor;
     else {
       cout << "Tolong Pilih Nomor yang valid!\n";
       sleep(1);
       system("clear");
       cin.ignore(100, '\n');
     }
-  } while (temp != '1' && temp != '2');
+  } while (temp != "1" && temp != "2");
 
   // Memilih tempat parkir
   do {
@@ -167,10 +165,10 @@ void kendaraanMasuk() {
     cout << "==> Program Parkir Motor dan Mobil <==\n";
     menampilkanParkiran();
     cout << "-> Mau parkir di nomor berapa? ";
-    cin >> tempStr;
+    cin >> temp;
     // error user input handling
     try {
-      id = std::stoi(tempStr);
+      id = std::stoi(temp);
 
       if (id < 10)  {
         if (!kendaraan[id].status) break;
@@ -190,7 +188,7 @@ void kendaraanMasuk() {
   } while (true);
 
   // konfirmasi data ke user
-  while (temp != 'y') {
+  while (temp != "y") {
     system("clear");
     cout << "==> Program Parkir Motor dan Mobil <==\n";
     cout << "-> Nama: " << nama << endl;
@@ -200,7 +198,7 @@ void kendaraanMasuk() {
     cout << "Apakah data sudah sesuai (y/n)? ";
     cin >> temp;
 
-    if (temp == 'y') {
+    if (temp == "y") {
       kendaraan[id].nama = nama;
       kendaraan[id].noPolisi = noPolisi;
       kendaraan[id].status = true;
@@ -210,22 +208,22 @@ void kendaraanMasuk() {
       sleep(1);
       system("clear");
       return;
-    } else if (temp == 'n') {
+    } else if (temp == "n") {
       system("clear");
       cout << "==> Program Parkir Motor dan Mobil <==\n";
       cout << "1. Kembali mengisi form\n0. Keluar dari form\n";
       cout << "-> Jadi sekarang bagaimana? ";
       cin >> temp;
-      if (temp == '1') {
+      if (temp == "1") {
         kendaraanMasuk();
         return;
-      } else if (temp == '0') return;
+      } else if (temp == "0") return;
       else {
         cout << "Tolong pilih nomor yang sesuai!\n";
         sleep(1);
       }
     } else {
-      cout << "Tolong pilih 'y' atau 'n'\n";
+      cout << "Tolong pilih y atau n\n";
       sleep(1);
     } 
   }
@@ -236,7 +234,7 @@ void kendaraanKeluar() {
   string jenis;
   string *parkirMana;
   Parkir *kendaraan;
-  char temp;
+  string temp;
 
   system("clear");
   cout << "==> Program Parkir Motor dan Mobil <==\n";
@@ -253,7 +251,7 @@ void kendaraanKeluar() {
   }
   cout << endl;
   // Memilih jenis
-  if (temp == '1') kendaraan = parkirMobil;
+  if (temp == "1") kendaraan = parkirMobil;
   else kendaraan = parkirMotor;
 
   int ID = pencarianPemilikKendaraan(kendaraan, &nama);
@@ -277,7 +275,7 @@ void kendaraanKeluar() {
     cout << "-> Total biaya parkir anda yang harus dibayar: Rp " << totalBiaya << endl;
     cout << "Apakah anda yakin mau keluar bos '" << nama << "'? (y/n)? ";
     cin >> temp;
-    if (temp == 'y') {
+    if (temp == "y") {
       int hari = menghitungHari(time(0) - hello);
       duit[hari] += totalBiaya;
       hapusData(&kendaraan[ID]);
@@ -296,10 +294,10 @@ void kendaraanKeluar() {
     cout << "1. Cari kembali\n0. Kembali ke menu utama\n";
     cout << "Sekarang mau apa? ";
     cin >> temp;
-    if (temp == '1') {
+    if (temp == "1") {
       kendaraanKeluar();
       return;
-    } else if (temp == '0') {
+    } else if (temp == "0") {
       system("clear");
       return;
     }
