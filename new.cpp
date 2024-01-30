@@ -47,11 +47,11 @@ time_t hello;
 int main () {
 
   string pilihan;
-  system("clear");
+  system("cls");
   hello = time(0) - totalHari;
   
   while(true) {
-    // system("clear");
+    // system("cls");
     cout << "|==> Management Parkir <==|\n";
     cout << "-> Hari ke " << menghitungHari(time(0) - hello) << endl;
     cout << "-> Pukul " << menghitungJam(time(0) - hello);
@@ -75,7 +75,7 @@ int main () {
     else {
       cout << "Tolong masukan input yang sesuai!\n";
       sleep(1);
-      system("clear");
+      system("cls");
       // error handling jika user menginputkan lebih dari 1 karakter
     }
   }
@@ -85,7 +85,7 @@ int main () {
 }
 
 void menampilkanParkiran() {
-  system("clear");
+  system("cls");
 
   cout << "=============    PARKIR    =============\n";
   cout << "==> Mobil <==             ==> Motor <==\n";
@@ -135,7 +135,7 @@ void kendaraanMasuk() {
   string temp;
   unsigned int id;
 
-  system("clear");
+  system("cls");
   cout << "==> Program Parkir Motor dan Mobil <==\n";
   cout << "-> Masukan nama: ";
   cin >> nama;
@@ -143,7 +143,7 @@ void kendaraanMasuk() {
   cin >> noPolisi;
 
   // Memilih jenis kendaraan
-  system("clear");
+  system("cls");
   do {
     cout << "==> Program Parkir Motor dan Mobil <==\n";
     cout << "1. Mobil  2. Motor\nApa jenis kendaraan anda? ";
@@ -154,14 +154,14 @@ void kendaraanMasuk() {
     else {
       cout << "Tolong Pilih Nomor yang valid!\n";
       sleep(1);
-      system("clear");
+      system("cls");
       cin.ignore(100, '\n');
     }
   } while (temp != "1" && temp != "2");
 
   // Memilih tempat parkir
   do {
-    system("clear");
+    system("cls");
     cout << "==> Program Parkir Motor dan Mobil <==\n";
     menampilkanParkiran();
     cout << "-> Mau parkir di nomor berapa? ";
@@ -183,13 +183,13 @@ void kendaraanMasuk() {
     } catch (const std::exception&) {
       cout << "Tolong Pilih Nomor yang valid!\n";
       sleep(1);
-      system("clear");
+      system("cls");
     }
   } while (true);
 
   // konfirmasi data ke user
   while (temp != "y") {
-    system("clear");
+    system("cls");
     cout << "==> Program Parkir Motor dan Mobil <==\n";
     cout << "-> Nama: " << nama << endl;
     cout << "-> Plat Nomor: " << noPolisi << endl;
@@ -206,10 +206,10 @@ void kendaraanMasuk() {
 
       cout << "Selamat, data anda sudah kami terima!\n";
       sleep(1);
-      system("clear");
+      system("cls");
       return;
     } else if (temp == "n") {
-      system("clear");
+      system("cls");
       cout << "==> Program Parkir Motor dan Mobil <==\n";
       cout << "1. Kembali mengisi form\n0. Keluar dari form\n";
       cout << "-> Jadi sekarang bagaimana? ";
@@ -236,7 +236,7 @@ void kendaraanKeluar() {
   Parkir *kendaraan;
   string temp;
 
-  system("clear");
+  system("cls");
   cout << "==> Program Parkir Motor dan Mobil <==\n";
   cout << "Kendaraan atas nama siapa kak? ";
   cin >> nama;
@@ -284,11 +284,11 @@ void kendaraanKeluar() {
 
       sleep(2);
     } else {
-      system("clear");
+      system("cls");
       return;
     }
   } else {
-    system("clear");
+    system("cls");
     cout << "==> Program Parkir Motor dan Mobil <==\n";
     cout << "-> tidak ditemukan atas nama '" << nama << "'" << endl;
     cout << "1. Cari kembali\n0. Kembali ke menu utama\n";
@@ -298,7 +298,7 @@ void kendaraanKeluar() {
       kendaraanKeluar();
       return;
     } else if (temp == "0") {
-      system("clear");
+      system("cls");
       return;
     }
   }
